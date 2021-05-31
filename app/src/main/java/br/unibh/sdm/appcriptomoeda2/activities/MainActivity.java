@@ -1,13 +1,16 @@
 package br.unibh.sdm.appcriptomoeda2.activities;
 
-import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +23,7 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class MainActivity extends Activity {
+public class MainActivity extends AppCompatActivity {
 
     private CriptomoedaService service = null;
     final private MainActivity mainActivity = this;
@@ -28,8 +31,28 @@ public class MainActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setTitle("Lista de Criptomoedas");
         setContentView(R.layout.activity_main);
         service = RestServiceGenerator.createService(CriptomoedaService.class);
+        criaAcaoBotaoFlutuante();
+    }
+
+    private void criaAcaoBotaoFlutuante() {
+        FloatingActionButton botaoNovo = findViewById(R.id.floatingActionButtonCriar);
+        botaoNovo.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.i("MainActivity","Clicou no botão para adicionar Nova Criptomoeda");
+                startActivity(new Intent(MainActivity.this,
+                        FormularioCriptomoedaActivity.class));
+
+            }
+        });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
         buscaCriptomoedas();
     }
 
@@ -40,7 +63,7 @@ public class MainActivity extends Activity {
             @Override
             public void onResponse(Call<List<Criptomoeda>> call, Response<List<Criptomoeda>> response) {
                 if (response.isSuccessful()) {
-                    Log.i("CriptomoedaDAO", "Retornou " + response.body().size() + " Criptomoedas!");
+                    Log.i("MainActivity", "Retornou " + response.body().size() + " Criptomoedas!");
                     List<String> lista2 = new ArrayList<String>();
                     for (Criptomoeda item : response.body()) {
                         lista2.add(item.getNome());
@@ -51,14 +74,14 @@ public class MainActivity extends Activity {
                             android.R.layout.simple_list_item_1,
                             lista2));
                 } else {
-                    Log.e("CriptomoedaDAO", "" + response.message());
-                    Toast.makeText(getApplicationContext(), "Erro: " + response.message(), Toast.LENGTH_LONG).show();
+                    Log.e("MainActivity", "" + response.message());
+                    Toast.makeText(getApplicationContext(), "Erro (" + response.code()+"): "+ response.message(), Toast.LENGTH_LONG).show();
                 }
             }
 
             @Override
             public void onFailure(Call<List<Criptomoeda>> call, Throwable t) {
-                Log.e("Error", "" + t.getMessage());
+                Log.e("MainActivity", "Erro: " + t.getMessage());
             }
         });
       }

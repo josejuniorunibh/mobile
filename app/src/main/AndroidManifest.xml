@@ -12,6 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCriptomoeda2"
         android:usesCleartextTraffic="true">
+        <activity android:name=".activities.FormularioCriptomoedaActivity">
+
+        </activity>
         <activity android:name=".activities.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
