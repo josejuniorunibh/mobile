@@ -1,9 +1,10 @@
 package br.unibh.sdm.appcriptomoeda2.entidades;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 
-public class Criptomoeda {
+public class Criptomoeda implements Serializable {
 
     private String codigo;
     private String nome;

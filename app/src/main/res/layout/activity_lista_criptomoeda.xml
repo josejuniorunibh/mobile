@@ -9,7 +9,7 @@
     android:layout_alignParentBottom="true"
     android:focusable="auto"
     android:orientation="vertical"
-    tools:context=".activities.MainActivity">
+    tools:context=".activities.ListaCriptomoedaActivity">
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/floatingActionButtonCriar"

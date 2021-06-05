@@ -8,35 +8,47 @@
     android:scrollbars="vertical"
     tools:context=".activities.FormularioCriptomoedaActivity">
 
-    <EditText
-        android:id="@+id/editTextCodigo"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Código"
-        android:inputType="textCapCharacters" />
+        android:layout_height="match_parent">
 
-    <EditText
-        android:id="@+id/editTextNome"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Nome"
-        android:inputType="textPersonName" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
 
-    <EditText
-        android:id="@+id/editTextTextMultiLineDescricao"
-        android:layout_width="match_parent"
-        android:layout_height="147dp"
-        android:ems="10"
-        android:gravity="start|top"
-        android:hint="Descrição"
-        android:inputType="textMultiLine"
-        android:overScrollMode="always" />
+            <EditText
+                android:id="@+id/editTextCodigo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Código"
+                android:inputType="textCapCharacters" />
 
-    <Button
-        android:id="@+id/buttonSalvar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Salvar" />
+            <EditText
+                android:id="@+id/editTextNome"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:hint="Nome"
+                android:inputType="textPersonName" />
+
+            <EditText
+                android:id="@+id/editTextTextMultiLineDescricao"
+                android:layout_width="match_parent"
+                android:layout_height="147dp"
+                android:ems="10"
+                android:gravity="start|top"
+                android:hint="Descrição"
+                android:inputType="textMultiLine"
+                android:overScrollMode="always" />
+
+            <Button
+                android:id="@+id/buttonSalvar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Salvar" />
+        </LinearLayout>
+    </ScrollView>
+
 </LinearLayout>
