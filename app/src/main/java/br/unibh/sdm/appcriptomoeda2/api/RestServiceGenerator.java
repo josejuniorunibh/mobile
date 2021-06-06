@@ -11,7 +11,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RestServiceGenerator {
 
-    public static final String API_BASE_URL = "http://10.0.2.2:8080/cripto-api/";
+    public static final String API_BASE_URL = "http://load-balance-backend-cripto-243964297.us-east-1.elb.amazonaws.com/cripto-api/";
+    //public static final String API_BASE_URL = "http://10.0.2.2:8080/cripto-api/";
 
     public static <S> S createService(Class<S> serviceClass) {
         Gson gson = new GsonBuilder()
